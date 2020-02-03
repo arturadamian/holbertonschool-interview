@@ -14,6 +14,8 @@
 """
 
 def canUnlockAll(boxes):
+    if (len(boxes) == 0) or (len(boxes) == 1 and len(boxes[0]) == 0):
+        return True
     index = 0
     keys = list(range(1,len(boxes)))
     shared_box = []
