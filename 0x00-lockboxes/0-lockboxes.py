@@ -13,13 +13,15 @@
     Return True if all boxes can be opened, else return False
 """
 
+
 def canUnlockAll(boxes):
     if (len(boxes) == 0) or (len(boxes) == 1 and len(boxes[0]) == 0):
         return True
     index = 0
-    keys = list(range(1,len(boxes)))
+    keys = list(range(1, len(boxes)))
     shared_box = []
     return canUnlock(boxes, index, keys, shared_box)
+
 
 def canUnlock(boxes, index, keys, shared_box):
     if keys == []:
@@ -34,4 +36,3 @@ def canUnlock(boxes, index, keys, shared_box):
         if key == len(shared_box) - 1:
             return False
     return canUnlock(boxes, index, keys, shared_box)
-
