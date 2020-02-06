@@ -7,7 +7,7 @@
 
     Prototype: def canUnlockAll(boxes)
     boxes is a list of lists
-    A key with the same number as a box opens that box
+    A s with the same number as a box opens that box
     You can assume all keys will be positive integers
     The first box boxes[0] is unlocked
     Return True if all boxes can be opened, else return False
@@ -15,24 +15,18 @@
 
 
 def canUnlockAll(boxes):
-    if (len(boxes) == 0) or (len(boxes) == 1 and len(boxes[0]) == 0):
-        return True
-    index = 0
-    keys = list(range(1, len(boxes)))
-    shared_box = []
-    return canUnlock(boxes, index, keys, shared_box)
-
-
-def canUnlock(boxes, index, keys, shared_box):
-    if keys == []:
-        return True
-    shared_box.extend(set(boxes[index]))
-    for key in range(len(shared_box)):
-        if shared_box[key] in keys:
-            index = shared_box[key]
-            shared_box.remove(index)
-            keys.remove(index)
-            break
-        if key == len(shared_box) - 1:
-            return False
-    return canUnlock(boxes, index, keys, shared_box)
+    lockers = list(range(1, len(boxes)))
+    keys = list(set(boxes[0]))
+    x = 0
+    while x < len(keys):
+        if keys[x] in lockers:
+            lockers.remove(keys[x])
+            keys.extend(boxes[keys[x]])
+            list(set(keys))
+            keys.remove(keys[0])
+            x = 0
+            if lockers == []:
+                return True
+        else:
+            x += 1
+    return False
