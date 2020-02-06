@@ -15,6 +15,8 @@
 
 
 def canUnlockAll(boxes):
+    if len(boxes) == 0:
+        return True
     lockers = list(range(1, len(boxes)))
     keys = list(set(boxes[0]))
     x = 0
