@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import numpy
 
 """ You have n number of locked boxes in front of you.
     Each box is numbered sequentially from 0 to n - 1 and
@@ -21,9 +20,7 @@ def canUnlockAll(boxes):
     lockers = list(range(1, len(boxes)))
     keys = set(boxes[0])
     x = 0
-    while lockers:
-        if x == len(lockers):
-            break
+    while x < len(lockers):
         if lockers[x] in keys:
             keys.update(boxes[lockers[x]])
             keys.remove(lockers[x])
