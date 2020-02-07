@@ -20,14 +20,17 @@ def canUnlockAll(boxes):
     lockers = list(range(1, len(boxes)))
     keys = boxes[0]
     x = 0
-    while x < len(keys):
+    while lockers:
+        if x == len(keys):
+            break
         if keys[x] in lockers:
             lockers.remove(keys[x])
-            if lockers == []:
-                return True
             keys.extend(boxes[keys[x]])
             keys.remove(keys[x])
             x = 0
         else:
             x += 1
-    return False
+    if lockers == []:
+        return True
+    else:
+        return False
