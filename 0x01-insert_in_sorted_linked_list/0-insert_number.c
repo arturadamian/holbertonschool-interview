@@ -15,7 +15,7 @@ listint_t *insert_node(listint_t **head, int number)
 		listint_t *current;
 		listint_t *new;
 
-		if ((!head) || (!(isdigit(number))))
+		if (!head || !(isdigit(number)))
 				return (NULL);
 		new = malloc(sizeof(*new));
 		if (!new)
