@@ -16,8 +16,8 @@ listint_t *insert_node(listint_t **head, int number)
 		listint_t *new;
 
 		if ((!head) || (!(isdigit(number))))
-                return (NULL);
-        new = malloc(sizeof(*new));
+				return (NULL);
+		new = malloc(sizeof(*new));
 		if (!new)
 			return (NULL);
 		current = *head;
@@ -26,7 +26,7 @@ listint_t *insert_node(listint_t **head, int number)
 		if (current->n > new->n)
 		{
 				new->next = current;
-                *head = new;
+				*head = new;
 				return (new);
 		}
 		while (current)
