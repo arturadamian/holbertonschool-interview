@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<ctype.h>
 #include"lists.h"
 
 
@@ -14,9 +15,9 @@ listint_t *insert_node(listint_t **head, int number)
 		listint_t *current;
 		listint_t *new;
 
-		if (!head)
-			return (NULL);
-		new = malloc(sizeof(*new));
+		if ((!head) || (!(isdigit(number))))
+                return (NULL);
+        new = malloc(sizeof(*new));
 		if (!new)
 			return (NULL);
 		current = *head;
