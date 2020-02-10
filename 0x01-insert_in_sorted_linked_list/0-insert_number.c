@@ -15,13 +15,20 @@ listint_t *insert_node(listint_t **head, int number)
 		listint_t *current;
 		listint_t *new;
 
-		if (!head || !(isdigit(number)))
-				return (NULL);
+		if (!head)
+			return (NULL);
 		new = malloc(sizeof(*new));
 		if (!new)
 			return (NULL);
+
 		current = *head;
 		new->n = number;
+
+		if (!*head)
+		{
+			*head = new;
+			return (new);
+		}
 
 		if (current->n > new->n)
 		{
