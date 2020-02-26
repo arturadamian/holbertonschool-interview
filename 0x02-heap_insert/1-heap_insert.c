@@ -28,7 +28,9 @@ que *to_queue(que **qu, heap_t *q_node)
 
 	new = malloc(sizeof(que));
 	if (!new)
-			return (NULL);
+	{
+		return (NULL);
+		}
 	new->node = q_node;
 	new->next = NULL;
 	current = *qu;
@@ -129,9 +131,13 @@ heap_t *heap_insert(heap_t **root, int value)
 		heap_t *node;
 
 		if (!root)
-				return (NULL);
+		{
+			return (NULL);
+				}
 		if (!*root)
-				return (*root = binary_tree_node(NULL, value));
+		{
+			return (*root = binary_tree_node(NULL, value));
+				}
 		node = add_node_to_tree(root, value);
 		return (swap(node));
 }
