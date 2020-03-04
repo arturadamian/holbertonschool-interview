@@ -63,11 +63,11 @@ void sandpiles_topple(int grid1[3][3], int grid2[3][3])
 						{
 								if (grid1[i][j] >= 4)
 								{
-												grid1[i][j] -= 4
+												grid1[i][j] -= 4;
 										i - 1 >= 0 ? grid2[i - 1][j] += 1 : 0;
 										i + 1 < 3 ? grid2[i + 1][j] += 1 : 0;
 										j - 1 >= 0 ? grid2[i][j - 1] += 1 : 0;
-																				j + 1 < 3 ? grid2[i][j + 1] += 1 : 0;
+										j + 1 < 3 ? grid2[i][j + 1] += 1 : 0;
 								}
 						}
 				}
