@@ -27,9 +27,7 @@ int recursion(listint_t **head, listint_t *tail)
 {
 	if (!tail)
 		return (1);
-	if (recursion(head, tail->next))
-		return (0);
-	int answer = (tail->n == (*head)->n);
-	*head = (*head)->next;
-	return (answer);
+	if (recursion(head, tail->next) && (tail->n == (*head)->n))
+		return ((*head = (*head)->next), 1);
+	return (0);
 }
