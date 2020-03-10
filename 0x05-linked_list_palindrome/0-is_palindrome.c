@@ -2,45 +2,34 @@
 
 
 /**
- * is_palindrome - checks if a linked list is a palindrom
- * @head: pointer to a list
+ * is_palindrome - checks if the linked list is a palindrom
+ * with the help of the recursion function
+ * @head: pointer to the list
  *
+ * Return: 0 - false or 1 - true
  **/
 int is_palindrome(listint_t **head)
 {
-	listint_t *cur;
-	unsigned int len;
-	unsigned int idx = 1;
-	unsigned int flag = 0;
+		listint_t *tail = *head;
 
-	if (!head)
-		return (0);
-	if (!*head)
-				return (1);
-	cur = *head;
-	len = 1;
-	while (cur->next)
-		{
-		len++;
-		cur = cur->next;
-	}
-	int arr[len / 2];
-
-	cur = *head;
-	while (cur->next)
-	{
-		if (flag == 0)
-			arr[idx] = cur->n;
-		if (idx == len / 2)
-			flag = 1;
-		cur = cur->next;
-		if (flag == 1 && cur->n == arr[idx])
-			idx--;
-		else if (flag == 0)
-			idx++;
-		else
-				return (0);
-	}
-	return (1);
+		return (recursion(head, tail));
 }
 
+/**
+ * recursion - on the way back checking elements with another pointer
+ * that starts moving from the head,
+ * @head: pointer to the list
+ * @tail: pointer to the head of the list
+ *
+ * Return: 0 - false or 1 - true
+ **/
+int recursion(listint_t **head, listint_t *tail)
+{
+	if (!tail)
+		return (1);
+	if (recursion(head, tail->next))
+		return (0);
+	int answer = (tail->n == (*head)->n);
+	*head = (*head)->next;
+	return (answer);
+}
