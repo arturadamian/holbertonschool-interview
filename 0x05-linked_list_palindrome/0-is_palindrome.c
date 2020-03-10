@@ -10,9 +10,9 @@
  **/
 int is_palindrome(listint_t **head)
 {
-		listint_t *tail = *head;
+		listint_t *new_head = *head;
 
-		return (recursion(head, tail));
+		return (recursion(&new_head, *head));
 }
 
 /**
