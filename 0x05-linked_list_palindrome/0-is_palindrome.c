@@ -30,7 +30,7 @@ int recursion(listint_t **head, listint_t *tail)
 		if (!tail)
 			return (1);
 		if (!recursion(head, tail->next))
-			return (0);
+			return (1);
 		int answer = (tail->n == (*head)->n);
 		*head = (*head)->next;
 		return (answer);
