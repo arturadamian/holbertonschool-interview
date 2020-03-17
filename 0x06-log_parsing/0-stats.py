@@ -1,18 +1,21 @@
 #!/usr/bin/python3
-import fileinput
-import sys
-import operator
-
-
-"""Write a script that reads stdin line by line and computes metrics
+""" Write a script that reads stdin
+    line by line and computes metrics
 """
 
+if __name__ == '__main__':
 
-def inputMetrix():
-    """
-        gets data from stdin formats it
-        and prints to stdout
-    """
+    import sys
+    
+    def printMetrix(fileSize, statusCodes):
+        """
+            prints the metrix
+        """
+
+        print("File size: {}".format(fileSize))
+        for status, count in sorted(statusCodes.items()):
+            if count:
+                print("{}: {}".format(status, count))
 
     k = 0
     fileSize = 0
@@ -23,7 +26,7 @@ def inputMetrix():
             data = line.split()
             try:
                 fileSize += int(data[-1])
-                code = int(data[-2])
+                code = data[-2]
                 if code in statusCodes:
                     statusCodes[code] += 1
                 else:
@@ -36,18 +39,3 @@ def inputMetrix():
     except KeyboardInterrupt:
         printMetrix(fileSize, statusCodes)
         raise
-
-
-def printMetrix(fileSize, statusCodes):
-    """
-        prints the metrix
-    """
-
-    print("File size: {}".format(fileSize))
-    sortedStatusCodes = sorted(statusCodes.items(), key=operator.itemgetter(0))
-    for status, count in sortedStatusCodes:
-        if count:
-            print("{}: {}".format(status, count))
-
-if __name__ == '__main__':
-    inputMetrix()
