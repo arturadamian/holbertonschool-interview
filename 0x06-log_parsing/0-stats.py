@@ -41,6 +41,7 @@ if __name__ == '__main__':
                 pass
             if counter % 10 == 0:
                 printMetrix(fileSize, statusCodes)
+        printMetrix(fileSize, statusCodes)
     except KeyboardInterrupt:
         printMetrix(fileSize, statusCodes)
         raise
