@@ -6,53 +6,41 @@
 if __name__ == '__main__':
 
     import sys
-    
-    def printer(size, d):
-        """Printer function"""
-        a = sorted(d.keys())
-        print("File size: {:d}".format(size))
-        for i in a:
-            if d[i] != 0:
-                print("{}: {}".format(i, d[i]))
+
     def printMetrix(fileSize, statusCodes):
         """
             prints the metrix
         """
 
-        print("File size: {:d}".format(fileSize))
+        print("File size: {}".format(fileSize))
         for status, count in sorted(statusCodes.items()):
             if count:
                 print("{}: {}".format(status, count))
 
-    k = 0
+    counter = 0
     fileSize = 0
-    statusCodes = {}
-    statusCodes = { "200": 0,
-                    "301": 0,
-                    "400": 0,
-                    "401": 0,
-                    "403": 0,
-                    "404": 0,
-                    "405": 0,
-                    "500": 0
-                    }
+    statusCodes = {"200": 0,
+                   "301": 0,
+                   "400": 0,
+                   "401": 0,
+                   "403": 0,
+                   "404": 0,
+                   "405": 0,
+                   "500": 0
+                   }
     try:
         for line in sys.stdin:
-            k += 1
+            counter += 1
             data = line.split()
             try:
                 code = data[-2]
                 if code in statusCodes:
                     statusCodes[code] += 1
-            except BaseException:
-                pass
-            try:
                 fileSize += int(data[-1])
             except BaseException:
                 pass
-            if k % 10 == 0:
+            if counter % 10 == 0:
                 printMetrix(fileSize, statusCodes)
-        printMetrix(fileSize, statusCodes)
     except KeyboardInterrupt:
         printMetrix(fileSize, statusCodes)
         raise
