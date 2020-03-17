@@ -30,7 +30,7 @@ def inputMetrix():
                 printMetrix(fileSize, statusCodes)
     except KeyboardInterrupt:
         printMetrix(fileSize, statusCodes)
-        pass
+        raise
 
 
 def printMetrix(fileSize, statusCodes):
@@ -41,7 +41,7 @@ def printMetrix(fileSize, statusCodes):
     print("File size: {}".format(fileSize))
     sortedStatusCodes = sorted(statusCodes.items(), key=operator.itemgetter(0))
     for status, count in sortedStatusCodes:
-        if count:
+        if count != 0:
             print("{}: {}".format(status, count))
 
 if __name__ == '__main__':
