@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+        let addPostRow = (data) => {
+            console.log(data)
+            $("body").append("<p><span>Post created with id " + data.id + ", title: " + data.title + ", author: " + data.author)
+        }
+        let listPosts = () => {
+            $.ajax({
+                type: 'GET',
+                dataType: 'jsonp',
+                url: "http://localhost:3000/posts",
+                success: (posts) => {
+                   for (post of posts) addPostRow(post)
+                },
+                error: () => alert("Server Error")
+            })
+        }
+        let buildForm = () => {
+            $("body").append("<form>")
+            $("form").append("<div><label for='author'>Author<label><input type='text' id='author'>")
+            $("form").append("<div><label for='title'>Title</label><textarea id='title'></textarea>")
+            $("form").append("<input type='submit'>")
+            $("input[type='submit']").click(() => sendForm() )
+        }
+        let sendForm = () => {
+            $("form").after("About to send the query to the API")
+            let data = { author: $("#author").val(), title: $("#title").val() }
+            $.ajax({
+                type: 'POST',
+                data: data,
+                url: "http://localhost:3000/posts",
+                success: (post) => addPostRow(post),
+                error: () => alert("Error sending the POST query")
+            })
+        }
+        listPosts()
+        buildForm()
+        </script>
+    </body>
+
+</html>
