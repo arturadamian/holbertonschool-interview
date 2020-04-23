@@ -1,7 +1,7 @@
 #include "menger.h"
 
 /**
- * menger - draws 2D menger sponge
+ * sponge - draws 2D menger sponge
  * @x: index for rows
  * @y: index for columns
  *
