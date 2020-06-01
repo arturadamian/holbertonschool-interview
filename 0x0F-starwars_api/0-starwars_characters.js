@@ -1,4 +1,4 @@
-#!/Users/arturadamian/.nvm/versions/node/v10.15.3/bin/node
+#!/usr/bin/node
 
 const request = require('request');
 
@@ -15,24 +15,3 @@ const exactOrder = (actors, x) => {
     exactOrder(actors, x + 1);
   });
 };
-
-// const req = (arr, i) => {
-//   if (i === arr.length) { return; }
-//   request(arr[i], (err, response, body) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log(JSON.parse(body).name);
-//       req(arr, i + 1);
-//     }
-//   });
-// };
-
-// request(`https://swapi-api.hbtn.io/api/films/${process.argv[2]}`, (err, response, body) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     const chars = JSON.parse(body).characters;
-//     req(chars, 0);
-//   }
-// });
