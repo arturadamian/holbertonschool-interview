@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-request('https://swapi-api.hbtn.io/api/films/' + process.argv[2] + '/', function (err, res, body) {
+request('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (err, res, body) {
   if (err) throw err;
   for (const actor of JSON.parse(body).characters) {
     request(actor, function (err, res, body) {
