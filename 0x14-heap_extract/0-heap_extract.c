@@ -38,7 +38,8 @@ heap_t *swap(heap_t *a, heap_t *b)
  **/
 heap_t *get_last_node(heap_t *root, int size)
 {
-	int b_idx, mask  = 0;
+	int b_idx = 0;
+	int mask  = 0;
 
 	for (; 1 << (b_idx + 1) <= size; b_idx++)
 		;
@@ -60,7 +61,7 @@ heap_t *get_last_node(heap_t *root, int size)
  */
 void heapify(heap_t *root)
 {
-	heap_t *max;
+	heap_t *max = NULL;
 	int first = 0;
 
 	while (max || !first)
