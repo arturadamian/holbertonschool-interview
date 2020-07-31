@@ -1,10 +1,11 @@
 #include "lists.h"
 
 /**
-* check_cycle - checks if alinked list has a cycle
+* find_listint_loop - checks if a linked list has a cycle
 * @head: pointer to a linked list
 *
-* Return: 0 if false or 1 if true
+* Return: NULL if false or
+* the pointer to the head of the loop
 **/
 listint_t *find_listint_loop(listint_t *head)
 {
