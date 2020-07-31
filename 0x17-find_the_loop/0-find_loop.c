@@ -18,7 +18,15 @@ listint_t *find_listint_loop(listint_t *head)
 		tortuga = tortuga->next;
 		rabbit = rabbit->next->next;
 		if (tortuga == rabbit)
-			return (tortuga);
+		{
+			tortuga = head;
+			while (tortuga != rabbit)
+			{
+				tortuga = tortuga->next;
+				rabbit = rabbit->next;
+			}
+			return (rabbit);
+		}
 	}
 	return (NULL);
 }
