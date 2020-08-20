@@ -58,7 +58,7 @@ void split_sort(int *array, int *subarray, int start, int end)
 
 /**
  * merge_sort - sorts array using "Merge sort"
- * 
+ *
  * @array: array
  * @size: size of array
  */
