@@ -9,7 +9,11 @@ def makeChange(coins, total):
 
     for i in range(1, total + 1):
         for c in coins:
-            if i - c >= 0:
-                arr[i] = min([arr[i - c]]) + 1
+            if c <= i:
+                arr[i] = min(arr[i], arr[i - c] + 1)
 
-    return [arr[total], -1][arr[total] == MAX]
+    return arr[i] if arr[i] != MAX else -1
+
+# if __name__=='__main__':
+#     print(makeChange([1, 2, 25], 37))
+#     print(makeChange([1256, 54, 48, 16, 102], 1453))
